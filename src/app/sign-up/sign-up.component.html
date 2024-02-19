@@ -2,10 +2,10 @@
 
 <form (submit)="signUp(); $event.preventDefault();">
   <div style="display: flex; flex-direction: column; gap: 10px;">
-    <label for="username"></label>
+    <label for="username">Username</label>
     <input type="text" id="username" placeholder="Username" (input)="onChangeUsername($event)">
 
-    <label for="email"></label>
+    <label for="email">Email</label>
     <input type="text" id="email" placeholder="Email" (input)="onChangeEmail($event)">
 
     <label for="password">Password</label>

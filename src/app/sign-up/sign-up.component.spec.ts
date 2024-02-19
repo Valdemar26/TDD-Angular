@@ -52,6 +52,38 @@ describe('Interactions', () => {
     passwordRepeatInput.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     button = signUp.querySelector('button');
+    expect(button?.disabled).toBeFalsy();
+  })
+  it('sends username, email and password to backend after clicked button', async () => {
+    const spy = spyOn(window, 'fetch');
+
+    const signUp = fixture.nativeElement as HTMLElement;
+    const usernameInput = signUp.querySelector('input[id="username"]') as HTMLInputElement;
+    const emailInput = signUp.querySelector('input[id="email"]') as HTMLInputElement;
+    const passwordInput = signUp.querySelector('input[id="password"]') as HTMLInputElement;
+
+
+    usernameInput.value = "user name";
+    usernameInput.dispatchEvent(new Event('input'));
+
+    emailInput.value = "username@gmail.com";
+    emailInput.dispatchEvent(new Event('input'));
+
+    passwordInput.value = "P4ssword";
+    passwordInput.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+    const button = signUp.querySelector('button');
+    button?.click();
+
+    const args = spy.calls.allArgs()[0];
+    const secondParam = args[1] as RequestInit;
+
+    expect(secondParam.body).toEqual(JSON.stringify({
+      username: "user name",
+      email: "username@gmail.com",
+      password: "P4ssword"
+    }));
   })
 })
 
