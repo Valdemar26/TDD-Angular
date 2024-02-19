@@ -1,7 +1,18 @@
 <h1>Sign Up</h1>
 
-<label for="username"></label>
-<input type="text" id="username" placeholder="Username">
+<div style="display: flex; flex-direction: column; gap: 10px;">
+  <label for="username"></label>
+  <input type="text" id="username" placeholder="Username">
 
-<label for="email"></label>
-<input type="text" id="email" placeholder="Email">
+  <label for="email"></label>
+  <input type="text" id="email" placeholder="Email">
+
+  <label for="password">Password</label>
+  <input type="password" id="password" placeholder="Password" (input)="onChangePassword($event)">
+
+  <label for="repeatPassword">Repeat Password</label>
+  <input type="password" id="repeatPassword" placeholder="Repeat password" (input)="onChangePasswordRepeat($event)">
+
+  <button [disabled]="password ? (password !== repeatPassword) : true">Sign Up</button>
+</div>
+
