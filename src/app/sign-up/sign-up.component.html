@@ -1,18 +1,22 @@
 <h1>Sign Up</h1>
 
-<div style="display: flex; flex-direction: column; gap: 10px;">
-  <label for="username"></label>
-  <input type="text" id="username" placeholder="Username">
+<form (submit)="signUp(); $event.preventDefault();">
+  <div style="display: flex; flex-direction: column; gap: 10px;">
+    <label for="username"></label>
+    <input type="text" id="username" placeholder="Username" (input)="onChangeUsername($event)">
 
-  <label for="email"></label>
-  <input type="text" id="email" placeholder="Email">
+    <label for="email"></label>
+    <input type="text" id="email" placeholder="Email" (input)="onChangeEmail($event)">
 
-  <label for="password">Password</label>
-  <input type="password" id="password" placeholder="Password" (input)="onChangePassword($event)">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Password" (input)="onChangePassword($event)">
 
-  <label for="repeatPassword">Repeat Password</label>
-  <input type="password" id="repeatPassword" placeholder="Repeat password" (input)="onChangePasswordRepeat($event)">
+    <label for="repeatPassword">Repeat Password</label>
+    <input type="password" id="repeatPassword" placeholder="Repeat password" (input)="onChangePasswordRepeat($event)">
 
-  <button [disabled]="password ? (password !== repeatPassword) : true">Sign Up</button>
-</div>
+    <button [disabled]="password ? (password !== repeatPassword) : true">Sign Up</button>
+  </div>
+</form>
+
+
 
