@@ -37,6 +37,23 @@ describe('Layout', () => {
   })
 })
 
+describe('Interactions', () => {
+  let fixture: ComponentFixture<SignUpComponent>;
+  it('enables the button when all the fields have valid input', async () => {
+    let button : any;
+
+    const signUp = fixture.nativeElement as HTMLElement;
+    const passwordInput = signUp.querySelector('input[id="password"]') as HTMLInputElement;
+    const passwordRepeatInput = signUp.querySelector('input[id="passwordRepeat"]') as HTMLInputElement;
+
+    passwordInput.value = "P4ssword";
+    passwordInput.dispatchEvent(new Event('input'));
+    passwordRepeatInput.value = "P4ssword";
+    passwordRepeatInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    button = signUp.querySelector('button');
+  })
+})
 
 
 
