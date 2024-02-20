@@ -2,6 +2,10 @@ import { render, screen} from '@testing-library/angular';
 import { SignUpComponent } from './sign-up.component';
 import { userEvent } from '@testing-library/user-event/setup/index';
 import 'whatwg-fetch';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
+// import { rest } from 'msw';
+import { setupServer } from 'msw/node';
 
 it('has Sign Up header', async () => {
   await render(SignUpComponent);
@@ -23,6 +27,10 @@ describe('Interactions', () => {
     expect(button).toBeEnabled();
   })
   it('sends username, email and password to backend after clicked button', async() => {
+    const server = setupServer(
+      // rest.post()
+    );
+
     const button = screen.getByRole('button', { name: 'Sign Up' });
 
     const spy = jest.spyOn(window, 'fetch');

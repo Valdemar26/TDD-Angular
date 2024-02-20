@@ -1,22 +1,38 @@
-<h1>Sign Up</h1>
+<div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+  <div class="card p-2">
+    <div class="card-header text-center">
+      <h1>Sign Up</h1>
+    </div>
 
-<form (submit)="signUp(); $event.preventDefault();">
-  <div style="display: flex; flex-direction: column; gap: 10px;">
-    <label for="username">Username</label>
-    <input type="text" id="username" placeholder="Username" (input)="onChangeUsername($event)">
+    <form (submit)="signUp(); $event.preventDefault();" class="card-body">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" id="username" placeholder="Username" (input)="onChangeUsername($event)" class="form-control">
+        </div>
 
-    <label for="email">Email</label>
-    <input type="text" id="email" placeholder="Email" (input)="onChangeEmail($event)">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="text" id="email" placeholder="Email" (input)="onChangeEmail($event)" class="form-control">
+        </div>
 
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="Password" (input)="onChangePassword($event)">
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" id="password" placeholder="Password" (input)="onChangePassword($event)" class="form-control">
+        </div>
 
-    <label for="repeatPassword">Repeat Password</label>
-    <input type="password" id="repeatPassword" placeholder="Repeat password" (input)="onChangePasswordRepeat($event)">
+        <div class="mb-3">
+          <label for="repeatPassword" class="form-label">Repeat Password</label>
+          <input type="password" id="repeatPassword" placeholder="Repeat password" (input)="onChangePasswordRepeat($event)" class="form-control">
+        </div>
 
-    <button [disabled]="password ? (password !== repeatPassword) : true">Sign Up</button>
+        <div class="text-center">
+          <button class="btn btn-primary" [disabled]="password ? (password !== repeatPassword) : true">
+            Sign Up
+          </button>
+        </div>
+
+      </div>
+    </form>
   </div>
-</form>
-
-
-
+</div>
